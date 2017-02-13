@@ -36,6 +36,9 @@ public class Token {
 			return (type == token.type);
 		}
 	}
+	public boolean equalsToken(Type passed_type) {
+		return (this.type == passed_type);
+	}
 
 	public String toString() {
 		StringBuilder string;

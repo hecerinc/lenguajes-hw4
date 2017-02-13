@@ -1,0 +1,6 @@
+SUM ( 3 , 4 ) ;
+3 ;
+MUL ( 10.55 , $myVar ) ;
+MUL ( $b2 , SUB ( SUM ( 2.1 , $a1 ) , MUL ( 12 , 13.809 ) ) ) ;
+DIV ( $x , $y ) ;
+SUB ( $a1 MUL ( 90 , 8 ) ) ;

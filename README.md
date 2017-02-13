@@ -16,4 +16,18 @@
 Functions: 
 
 - statement()
-- epxression()
+- expression()
+- func()
+- factor()
+- param()
+
+Matches:
+
+- VARIABLE
+- FUNCTION
+- PARENS
+- INTEGER
+- DOUBLE
+- PARAMETER_SEP
+- EOI
+
