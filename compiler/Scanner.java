@@ -37,6 +37,25 @@ public class Scanner {
 			value = new StringBuilder();
 			do {
 				c = string.charAt(index);
+				if(Pattern.matches("S|M|D", Character.toString(c))){
+					if(value == null || value.length() == 0){
+						if(string.substring(index).length() >= 3){
+							String x = string.substring(index, index+3);
+							if(x.equals("SUM") || x.equals("SUB") || x.equals("DIV") || x.equals("MUL")){
+								index += 4;
+								state = 104;
+								// update val
+								value.append(x);
+								break;
+							}
+						}
+						else{
+							// Stop reading, this is an error
+							state = ERR;
+							break;
+						}
+					}
+				}
 				index++;
 				state = transitionMatrix[state][filter(c)];
 				if (state > 0 && state < 100) {
