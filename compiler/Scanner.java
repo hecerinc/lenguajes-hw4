@@ -14,15 +14,16 @@ public class Scanner {
 	public Scanner() {
 		tokens = new ArrayList<Token>();
 		transitionMatrix =  new int[][]{
-			{0, 1, ERR, ERR, 4, 6, 7, 8, ERR},
-			{100, 1, 2, ERR, ERR, ERR, ERR, ERR, ERR},
-			{ERR, 3, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
-			{101, 3, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
-			{ERR, ERR, ERR, 5, ERR, ERR, ERR, ERR, ERR},
-			{102, 5, ERR, 5, ERR, ERR, ERR, ERR, ERR},
-			{103, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
-			{104, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
-			{105, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR}
+			{0, 1, ERR, ERR, 4, 6, 7, 8, 9, ERR},
+			{100, 1, 2, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
+			{ERR, 3, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
+			{101, 3, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
+			{ERR, ERR, ERR, 5, ERR, ERR, ERR, ERR, ERR, ERR},
+			{102, 5, ERR, 5, ERR, ERR, ERR, ERR, ERR, ERR},
+			{103, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
+			{104, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
+			{105, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR},
+			{106, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR, ERR}
 		};
 	}
 	public boolean scan(String string) {
@@ -90,6 +91,9 @@ public class Scanner {
 				case 105:
 					tokens.add(new Token(Type.EOI, value.toString()));
 					break;
+				case 106:
+					tokens.add(new Token(Type.PARENS, value.toString()));
+					break;
 			}
 			index--;
 			state = 0;
@@ -113,11 +117,11 @@ public class Scanner {
 			return 4;
 		if(Pattern.matches(",", Character.toString(c)))
 			return 5;
-		if(Pattern.matches("SUM|SUB|DIV|MUL", Character.toString(c)))
-			return 6;
 		if(Pattern.matches(";", Character.toString(c)))
 			return 7;
-		return 8;
+		if(Pattern.matches("\\(|\\)", Character.toString(c)))
+			return 8;
+		return 9;
 	}
 
 }

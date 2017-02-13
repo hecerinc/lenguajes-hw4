@@ -8,7 +8,8 @@ public class Token {
 		VARIABLE, // 102
 		PARAMETER_SEP, // 103
 		FUNCTION, // 104
-		EOI  // 105
+		EOI,  // 105
+		PARENS // 106
 	}
 
 
